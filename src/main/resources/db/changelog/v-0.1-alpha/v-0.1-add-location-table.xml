@@ -9,7 +9,7 @@
             <column autoIncrement="true" name="ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="LOCATION" type="VARCHAR(255)">
+            <column name="NAME" type="VARCHAR(255)">
                 <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
@@ -17,16 +17,16 @@
 
     <changeSet id="2" author="nikitab">
         <insert tableName="LOCATION">
-            <column name="LOCATION" value="Ramallah"/>
+            <column name="NAME" value="Ramallah"/>
         </insert>
         <insert tableName="LOCATION">
-            <column name="LOCATION" value="Beit-El"/>
+            <column name="NAME" value="Beit-El"/>
         </insert>
         <insert tableName="LOCATION">
-            <column name="LOCATION" value="Dura"/>
+            <column name="NAME" value="Dura"/>
         </insert>
         <insert tableName="LOCATION">
-            <column name="LOCATION" value="Duma"/>
+            <column name="NAME" value="Duma"/>
         </insert>
     </changeSet>
 

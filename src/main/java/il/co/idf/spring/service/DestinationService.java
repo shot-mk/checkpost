@@ -14,7 +14,7 @@ public class DestinationService extends GenericService<Destination> {
 	private DestinationRepository repository;
 
 	public Destination save(Destination destination) {
-		Destination byDestination = repository.findByDestination(destination.getDestination().trim());
+		Destination byDestination = repository.findByName(destination.getName().trim());
 		if (byDestination == null) {
 			return repository.save(destination);
 		} else {
@@ -23,7 +23,7 @@ public class DestinationService extends GenericService<Destination> {
 	}
 
 	public List<Destination> findByQuery(String query) {
-		return repository.findDirectionsByDestinationContaining(query);
+		return repository.findAllDestinationByNameContaining(query);
 	}
 
 }

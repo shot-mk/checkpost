@@ -19,10 +19,10 @@ public class Destination implements GenericEntity {
     private long id;
 
     @Column(unique = true)
-    private String destination;
+    private String name;
 
-    public Destination(String destination) {
-        this.destination = destination;
+    public Destination(String name) {
+        this.name = name;
     }
 
 }

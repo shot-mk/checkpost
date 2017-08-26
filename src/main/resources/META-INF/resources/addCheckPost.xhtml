@@ -78,10 +78,10 @@
 
                             <h:panelGrid id="carGrid" columns="3" cellpadding="10">
 
-                                <p:outputLabel for="number" value="ל.ז.:"/>
-                                <p:inputMask id="number" dir="LTR" mask="9999999"
-                                             value="#{addCarController.car.number}"/>
-                                <p:message for="number"/>
+                                <p:outputLabel for="plateNumber" value="ל.ז.:"/>
+                                <p:inputMask id="plateNumber" dir="LTR" mask="9999999"
+                                             value="#{addCarController.car.plateNumber}"/>
+                                <p:message for="plateNumber"/>
 
                                 <p:outputLabel for="color" value="צבע:"/>
                                 <p:selectOneMenu id="color" value="#{addCarController.car.color}"

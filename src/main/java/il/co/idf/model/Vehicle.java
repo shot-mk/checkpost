@@ -21,14 +21,14 @@ public class Vehicle implements GenericEntity {
 	private Color color;
 
 	@Column(name = "PLATE_NUMBER")
-	private String number;
+	private String plateNumber;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "MANUFACTURER_ID")
 	private Manufacturer manufacturer;
 
-	public Vehicle(String number, Color color) {
-		this.number = number;
+	public Vehicle(String plateNumber, Color color) {
+		this.plateNumber = plateNumber;
 		this.color = color;
 	}
 

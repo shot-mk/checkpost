@@ -35,9 +35,9 @@
 
                     <h:panelGrid id="carGrid" columns="3" cellpadding="5">
 
-                        <p:outputLabel for="number" value="Car Number:"/>
-                        <p:inputMask id="number" mask="9999999" value="#{addCarController.car.number}"/>
-                        <p:message for="number"/>
+                        <p:outputLabel for="plateNumber" value="Car Number:"/>
+                        <p:inputMask id="plateNumber" mask="9999999" value="#{addCarController.car.plateNumber}"/>
+                        <p:message for="plateNumber"/>
 
                         <p:outputLabel for="color" value="Color: "/>
                         <p:selectOneMenu id="color" value="#{addCarController.car.color}" style="width:150px" converter="entityConverter">

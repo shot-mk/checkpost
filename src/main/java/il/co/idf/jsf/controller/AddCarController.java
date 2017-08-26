@@ -148,8 +148,8 @@ public class AddCarController implements Serializable {
 		if (passenger.getTelephone() != null && !"".equals(passenger.getTelephone())) {
 			values.add(passenger.getTelephone());
 		}
-		if (vehicle.getNumber() != null && !"".equals(vehicle.getNumber())) {
-			values.add(vehicle.getNumber());
+		if (vehicle.getPlateNumber() != null && !"".equals(vehicle.getPlateNumber())) {
+			values.add(vehicle.getPlateNumber());
 		}
 		if (values.size() >= 2) {
 			return true;

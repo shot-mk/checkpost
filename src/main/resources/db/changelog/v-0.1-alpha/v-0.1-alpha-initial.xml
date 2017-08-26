@@ -1,0 +1,17 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="v-0.1-add-district-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-location-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-destination-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-color-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-manufacturer-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-passenger-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-vehicle-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-checkpost-table.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-add-checkpost-passenger-table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

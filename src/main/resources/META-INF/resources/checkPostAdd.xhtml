@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view contentType="text/html">
+
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+    </h:head>
+
+    <h:body>
+        <h2>Add CheckPost</h2>
+        <h:form id="checkForm">
+
+            <h:panelGrid columns="3" cellpadding="5">
+
+                <p:outputLabel for="inCar" value="In Car? : "/>
+                <p:inputSwitch id="inCar" value="#{addCarController.inCar}" onLabel="yes" offLabel="no">
+                    <p:ajax update="carGroup"/>
+                </p:inputSwitch>
+
+            </h:panelGrid>
+
+            <h:panelGroup id="carGroup" layout="block">
+                <h:panelGroup id="renderedCarGroup" layout="block" rendered="#{addCarController.inCar}">
+
+                    <h3 style="margin-top:0">Car details</h3>
+                    <p:separator/>
+
+                    <h:panelGrid id="carGrid" columns="3" cellpadding="5">
+
+                        <p:outputLabel for="number" value="Car Number:"/>
+                        <p:inputMask id="number" mask="9999999" value="#{addCarController.car.number}"/>
+                        <p:message for="number"/>
+
+                        <p:outputLabel for="color" value="Color: "/>
+                        <p:selectOneMenu id="color" value="#{addCarController.car.color}" style="width:150px" converter="entityConverter">
+                            <f:selectItem itemLabel="Select Color" itemValue=""/>
+                            <f:selectItems value="#{addCarController.carColors}" var="color" itemValue="#{color}" itemLabel="#{color.name}"/>
+                        </p:selectOneMenu>
+                        <p:message for="color"/>
+
+
+                        <p:outputLabel value="Make:" for="make"/>
+                        <p:autoComplete id="make" dropdown="true" value="#{addCarController.car.manufacturer}" converter="entityConverter"
+                                        var="manufacturer" itemLabel="#{manufacturer.name}" itemValue="#{manufacturer}"
+                                        completeMethod="#{addCarController.completeFactories}" forceSelection="true">
+                        </p:autoComplete>
+                        <p:message for="make"/>
+
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:panelGroup>
+
+
+            <h3 style="margin-top:0">Person details</h3>
+            <p:separator/>
+
+            <h:panelGrid id="personGrid" columns="3" cellpadding="5">
+
+                <p:outputLabel for="license" value="Person License Number:"/>
+                <p:inputMask id="license" required="true" mask="999999999" value="#{addCarController.passenger.passport}"/>
+                <p:message for="license"/>
+
+                <p:outputLabel for="telephone" value="Person Telephone Number:"/>
+                <p:inputMask id="telephone" mask="(099)-999-99-99" value="#{addCarController.passenger.telephone}"/>
+                <p:message for="telephone"/>
+
+            </h:panelGrid>
+
+            <h3 style="margin-top:0">Time and Zone details</h3>
+            <p:separator/>
+
+            <h:panelGrid id="checkPostGrid" columns="3" cellpadding="5">
+
+
+                <p:outputLabel value="Area:" for="district"/>
+                <p:selectOneMenu id="district" value="#{addCarController.checkPost.district}" converter="entityConverter">
+                    <f:selectItem itemLabel="Select Area" itemValue=""/>
+                    <f:selectItems value="#{addCarController.districts}" var="district" itemValue="#{district}" itemLabel="#{district.name}"/>
+                </p:selectOneMenu>
+                <p:message for="district"/>
+
+                <p:outputLabel for="destination" value="Direction:"/>
+                <p:autoComplete id="destination" value="#{addCarController.destination}"
+                                completeMethod="#{addCarController.completeDirections}"/>
+                <p:message for="destination"/>
+
+                <p:outputLabel for="location" value="Location:"/>
+                <p:autoComplete id="location" value="#{addCarController.location}"
+                                completeMethod="#{addCarController.completeLocations}"/>
+                <p:message for="location"/>
+
+                <p:outputLabel for="date" value="Date:"/>
+                <p:calendar id="date" value="#{addCarController.checkPost.date}"/>
+                <p:message for="date"/>
+
+                <p:outputLabel for="time" value="Date:"/>
+                <pe:timePicker id="time" value="#{addCarController.checkPost.time}" mode="spinner"
+                               widgetVar="spinnerBtnTimeWidget"
+                               showOn="button"/>
+                <p:message for="time"/>
+
+
+            </h:panelGrid>
+
+            <p:commandButton id="submitButton" action="#{addCarController.onSave}" value="Submit" update="checkForm"/>
+        </h:form>
+
+    </h:body>
+</f:view>
+</html>

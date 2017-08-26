@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html dir="rtl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view contentType="text/html">
+
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>Checkpost</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Custom CSS -->
+        <link href="../dist/css/sb-admin-2.css" rel="stylesheet"/>
+
+        <!-- Custom Fonts -->
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="messages" sticky="true" showDetail="true" autoUpdate="true"/>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.xhtml">Checkpost 0.1.ALPHA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="checkPostList.xhtml">אזור ניהול</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="page-wrapper">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">הוסיף</h1>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-6">
+
+                        <h:form id="checkForm">
+
+                            <p:outputLabel for="district" value="חתמר:"/>
+                            <p:selectOneMenu id="district" value="#{addCarController.checkPost.district}"
+                                             disabled="#{addCarController.areaSelectDisabled}"
+                                             converter="entityConverter">
+                                <f:selectItem itemLabel="בחר חתמר" itemValue=""/>
+                                <f:selectItems value="#{addCarController.districts}" var="district" itemValue="#{district}"
+                                               itemLabel="#{district.name}"/>
+                            </p:selectOneMenu>
+                            <p:message for="district"/>
+
+
+                            <h3 style="margin-top:0">פרטי הרבס</h3>
+                            <p:separator/>
+
+                            <h:panelGrid id="carGrid" columns="3" cellpadding="10">
+
+                                <p:outputLabel for="number" value="ל.ז.:"/>
+                                <p:inputMask id="number" dir="LTR" mask="9999999"
+                                             value="#{addCarController.car.number}"/>
+                                <p:message for="number"/>
+
+                                <p:outputLabel for="color" value="צבע:"/>
+                                <p:selectOneMenu id="color" value="#{addCarController.car.color}"
+                                                 style="width:150px" converter="entityConverter">
+                                    <f:selectItem itemLabel="Select Color" itemValue=""/>
+                                    <f:selectItems value="#{addCarController.carColors}" var="color"
+                                                   itemValue="#{color}" itemLabel="#{color.name}"/>
+                                </p:selectOneMenu>
+                                <p:message for="color"/>
+
+
+                                <p:outputLabel for="make" value="סוג רכב:"/>
+                                <p:autoComplete id="make" dropdown="true" value="#{addCarController.car.manufacturer}"
+                                                converter="entityConverter"
+                                                var="manufacturer" itemLabel="#{manufacturer.name}" itemValue="#{manufacturer}"
+                                                completeMethod="#{addCarController.completeFactories}"
+                                                forceSelection="true">
+                                </p:autoComplete>
+                                <p:message for="make"/>
+
+                            </h:panelGrid>
+                            <br/><br/>
+
+
+                            <h3 style="margin-top:0">פרתי בן אדם</h3>
+                            <p:separator/>
+
+                            <h:panelGrid id="personGrid" columns="3" cellpadding="5">
+
+                                <p:outputLabel for="license" value="ת.ז.:"/>
+                                <p:inputMask id="license" mask="999999999"
+                                             dir="LTR"
+                                             value="#{addCarController.passenger.passport}"/>
+                                <p:message for="license"/>
+
+                                <p:outputLabel for="telephone" value="מספר טלפון:"/>
+                                <p:inputMask id="telephone" mask="(099)-999-99-99"
+                                             dir="LTR"
+                                             value="#{addCarController.passenger.telephone}"/>
+                                <p:message for="telephone"/>
+
+                            </h:panelGrid>
+                            <br/><br/>
+
+                            <h3 style="margin-top:0">מיקום וזמן</h3>
+                            <p:separator/>
+
+                            <h:panelGrid id="checkPostGrid" columns="3" cellpadding="5">
+
+                                <p:outputLabel for="destination" value="כיוון נסיע:"/>
+                                <p:autoComplete id="destination" value="#{addCarController.destination}"
+                                                completeMethod="#{addCarController.completeDirections}"/>
+                                <p:message for="destination"/>
+
+                                <p:outputLabel for="location" value="מיקום:"/>
+                                <p:autoComplete id="location" value="#{addCarController.location}"
+                                                completeMethod="#{addCarController.completeLocations}"/>
+                                <p:message for="location"/>
+
+                                <p:outputLabel for="date" value="תאריח:"/>
+                                <p:calendar id="date" value="#{addCarController.checkPost.date}"
+                                            pattern="dd/MM/yyyy"/>
+                                <p:message for="date"/>
+
+                                <p:outputLabel for="time" value="זמן:"/>
+                                <pe:timePicker
+                                        id="time" value="#{addCarController.checkPost.time}" mode="spinner"
+                                        showNowButton="true"
+                                        widgetVar="spinnerBtnTimeWidget"
+                                        showOn="button"/>
+                                <p:message for="time"/>
+
+
+                            </h:panelGrid>
+                            <br/><br/>
+
+                            <p:commandButton id="submitButton" action="#{addCarController.onSave}" value="שלח" update="checkForm"/>
+                        </h:form>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <!-- jQuery -->
+        <!--<script src="../vendor/jquery/jquery.min.js"></script>-->
+
+        <!-- Bootstrap Core JavaScript -->
+        <!--<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>-->
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <!--<script src="../vendor/metisMenu/metisMenu.min.js"></script>-->
+
+        <!--&lt;!&ndash; Custom Theme JavaScript &ndash;&gt;-->
+        <!--<script src="../dist/js/sb-admin-2.js"></script>-->
+    </h:body>
+</f:view>
+</html>

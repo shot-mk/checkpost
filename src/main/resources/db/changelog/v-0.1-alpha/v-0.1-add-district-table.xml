@@ -1,0 +1,42 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="nikitab">
+        <createTable tableName="DISTRICT">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="nikitab">
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="שומרון"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="יהודה"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="בנימין"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="עציון"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="אפריים"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="מנשה"/>
+        </insert>
+        <insert tableName="DISTRICT">
+            <column name="NAME" value="417"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

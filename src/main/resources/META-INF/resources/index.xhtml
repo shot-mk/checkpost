@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html dir="rtl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view contentType="text/html">
+
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>Checkpost</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Custom CSS -->
+        <link href="../dist/css/custom.css" rel="stylesheet"/>
+
+        <!-- Morris Charts CSS -->
+        <link href="../vendor/morrisjs/morris.css" rel="stylesheet"/>
+
+        <!-- Custom Fonts -->
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+
+    <h:body>
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.xhtml">Checkpost 0.1.ALPHA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="checkPostList.xhtml">אזור ניהול</a></li>
+                </ul>
+                </div>
+
+            </nav>
+
+            <div class="col-lg-10 col-md-offset-1">
+
+                <div class="row">
+                    <div class="col-lg-12" >
+                        <h1 class="page-header">חתמרים</h1>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                  <ui:repeat value="#{indexPageController.districts.subList(0,4)}" var="ar">
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="fa fa-tasks fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge">#{ar.name}</div>
+                                          <div>#{indexPageController.getCheckPostNumberForArea(ar.name)}</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./addCheckPost.xhtml?htmr=#{ar.id}">
+                                  <div class="panel-footer">
+                                      <span class="pull-left"><i class="fa fa-arrow-circle-left"></i></span>
+                                      <span class="pull-right">הוסיף</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </ui:repeat>
+                </div>
+
+                <div class="row">
+                    <ui:repeat value="#{indexPageController.districts.subList(4,7)}" var="ar">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-tasks fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">#{ar.name}</div>
+                                            <div>#{indexPageController.getCheckPostNumberForArea(ar.name)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="./addCheckPost.xhtml?htmr=#{ar.id}">
+                                    <div class="panel-footer">
+                                        <span class="pull-left"><i class="fa fa-arrow-circle-left"></i></span>
+                                        <span class="pull-right">הוסיף</span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> השוואה כללית
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>נוסופו להחרונה
+                            </div>
+                            <div class="panel-body">
+                                <p:dataTable id="checkpostTbl" var="checkPost" value="#{indexPageController.latestCheckPosts}"
+                                             emptyMessage="לא נמצאו שיאים">
+                                    <p:column headerText="ת.ז">
+                                        <h:outputText value="#{checkPost.passenger.passport}" dir="LTR"/>
+                                    </p:column>
+
+                                    <p:column headerText="מספר טלפון">
+                                        <h:outputText value="#{checkPost.passenger.telephone}" dir="LTR" />
+                                    </p:column>
+
+                                    <p:column headerText="ל.ז">
+                                        <h:outputText value="#{checkPost.car.number}" dir="LTR"/>
+                                    </p:column>
+
+                                    <p:column headerText="סוג רכב">
+                                        <h:outputText value="#{checkPost.car.manufacturer.name}" />
+                                    </p:column>
+
+                                    <p:column headerText="צבע רכב">
+                                        <h:outputText value="#{checkPost.car.color.name}" />
+                                    </p:column>
+
+                                    <p:column headerText="מיקום">
+                                        <h:outputText value="#{checkPost.location.location}" />
+                                    </p:column>
+
+                                    <p:column headerText="כיוון נסיע">
+                                        <h:outputText value="#{checkPost.destination.destination}" />
+                                    </p:column>
+
+                                    <p:column headerText="חתמר">
+                                        <h:outputText value="#{checkPost.district.name}" />
+                                    </p:column>
+
+                                    <p:column headerText="תאריח">
+                                        <h:outputText value="#{checkPost.date}">
+                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+
+                                    <p:column headerText="זמן">
+                                        <h:outputText value="#{checkPost.time}">
+                                            <f:convertDateTime type="time" pattern="HH:mm"/>
+                                        </h:outputText>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- jQuery -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="../vendor/raphael/raphael.min.js"></script>
+        <script src="../vendor/morrisjs/morris.min.js"></script>
+        <script type="text/javascript">
+            Morris.Donut({
+                element: 'morris-donut-chart',
+                data: [
+                    {label: "מנשה", value: #{indexPageController.getCheckPostNumberForArea('מנשה')}},
+                    {label: "417", value: #{indexPageController.getCheckPostNumberForArea('417')}},
+                    {label: "אפריים", value: #{indexPageController.getCheckPostNumberForArea('אפריים')}},
+                    {label: "עציון", value: #{indexPageController.getCheckPostNumberForArea('עציון')}},
+                    {label: "בנימין", value: #{indexPageController.getCheckPostNumberForArea('בנימין')}},
+                    {label: "שומרון", value: #{indexPageController.getCheckPostNumberForArea('שומרון')}},
+                    {label: "יהודה", value: #{indexPageController.getCheckPostNumberForArea('יהודה')}}
+                ]
+            });
+        </script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
+    </h:body>
+</f:view>
+</html>

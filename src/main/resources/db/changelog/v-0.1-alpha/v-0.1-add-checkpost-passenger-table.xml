@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="nikitab">
+
+        <createTable tableName="CHECKPOST_PASSENGER">
+
+            <column name="CHECKPOST_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PASSENGER_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="2" author="nikitab">
+        <addForeignKeyConstraint baseTableName="CHECKPOST_PASSENGER" baseColumnNames="CHECKPOST_ID" constraintName="fk_checkpost_pass_chk"
+                                 referencedTableName="CHECKPOST"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="CHECKPOST_PASSENGER" baseColumnNames="PASSENGER_ID" constraintName="fk_checkpost_pass_ps"
+                                 referencedTableName="PASSENGER"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>

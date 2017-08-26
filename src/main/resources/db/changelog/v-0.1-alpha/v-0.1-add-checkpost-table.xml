@@ -1,0 +1,67 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="nikitab">
+
+        <createTable tableName="CHECKPOST">
+
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="DISTRICT_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VEHICLE_ID" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            
+            <column name="LOCATION_ID" type="BIGINT">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="DESTINATION_ID" type="BIGINT">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="DATE" type="DATE">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="TIME" type="TIME">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="DATE_CREATED" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="2" author="nikitab">
+        <addForeignKeyConstraint baseTableName="CHECKPOST" baseColumnNames="DISTRICT_ID" constraintName="fk_checkpost_DISTRICT"
+                                 referencedTableName="DISTRICT"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="CHECKPOST" baseColumnNames="VEHICLE_ID" constraintName="fk_checkpost_vehicle"
+                                 referencedTableName="VEHICLE"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="CHECKPOST" baseColumnNames="LOCATION_ID" constraintName="fk_checkpost_location"
+                                 referencedTableName="LOCATION"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="CHECKPOST" baseColumnNames="DESTINATION_ID" constraintName="fk_checkpost_destination"
+                                 referencedTableName="DESTINATION"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>

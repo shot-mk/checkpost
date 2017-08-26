@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
 
-	Destination findByDestination(String destination);
+	Destination findByName(String name);
 
-	List<Destination> findDirectionsByDestinationContaining(String destination);
+	List<Destination> findAllDestinationByNameContaining(String name);
 
 }

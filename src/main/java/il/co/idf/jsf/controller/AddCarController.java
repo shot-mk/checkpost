@@ -102,12 +102,12 @@ public class AddCarController implements Serializable {
 	}
 
 	public List<String> completeDirections(String query) {
-		List<String> filteredDirections = destinationService.findByQuery(query).stream().map(a -> a.getDestination()).collect(toList());
+		List<String> filteredDirections = destinationService.findByQuery(query).stream().map(a -> a.getName()).collect(toList());
 		return filteredDirections;
 	}
 
 	public List<String> completeLocations(String query) {
-		List<String> filteredLocations = locationService.findByQuery(query).stream().map(a -> a.getLocation()).collect(toList());
+		List<String> filteredLocations = locationService.findByQuery(query).stream().map(a -> a.getName()).collect(toList());
 		return filteredLocations;
 	}
 

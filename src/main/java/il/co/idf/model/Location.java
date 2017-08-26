@@ -18,10 +18,10 @@ public class Location implements GenericEntity {
 	private long id;
 
 	@Column(unique = true)
-	String location;
+	String name;
 
-	public Location(String location) {
-		this.location = location;
+	public Location(String name) {
+		this.name = name;
 	}
 
 }

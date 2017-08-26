@@ -16,7 +16,7 @@ public class LocationService extends GenericService<Location> {
 
 	@Override
 	public Location save(Location location) {
-		Location loc = locationRepository.findByLocation(location.getLocation().trim());
+		Location loc = locationRepository.findByName(location.getName().trim());
 		if (loc == null) {
 			return locationRepository.save(location);
 		} else {
@@ -26,7 +26,7 @@ public class LocationService extends GenericService<Location> {
 
 
 	public List<Location> findByQuery(String query) {
-		return locationRepository.findLocationsByLocationContaining(query);
+		return locationRepository.findLocationsByNameContaining(query);
 	}
 
 

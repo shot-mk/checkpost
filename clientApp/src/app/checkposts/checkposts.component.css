@@ -1,0 +1,30 @@
+h2 {
+  margin-top: 5%; }
+
+.checkpost-panel {
+  margin: 0 0 10%; }
+  .checkpost-panel .fa-tasks {
+    margin-top: 4px; }
+  .checkpost-panel .fa-tasks, .checkpost-panel p {
+    color: white; }
+  .checkpost-panel p {
+    font-size: 2rem; }
+    .checkpost-panel p.checkpost-quantity {
+      font-size: 1rem; }
+
+.checkpost-panel-top {
+  background-color: #337ab7; }
+
+.checkpost-panel-bottom {
+  padding: 8px;
+  border: #337ab7 1px solid; }
+
+.checkpost-comparison {
+  border: #f5f5f5 solid 1px; }
+
+.checkpost-comparison-top {
+  background-color: #f5f5f5;
+  padding-top: 12px;
+  padding-bottom: 12px; }
+
+/*# sourceMappingURL=app.component.css.map */

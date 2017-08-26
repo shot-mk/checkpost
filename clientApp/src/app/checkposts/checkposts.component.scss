@@ -1,0 +1,36 @@
+$blue: #337ab7;
+$lightgray: #f5f5f5;
+
+h2 {
+	margin-top: 5%;
+}
+.district-panel {
+	margin: 0 0 10%;
+	.fa-tasks {
+		margin-top: 4px;
+	}
+	.fa-tasks, p {
+		color: white;
+	}
+	p {
+		font-size: 2rem;
+		&.district-quantity {
+			font-size: 1rem;
+		}
+	}
+}
+.district-panel-top {
+	background-color: $blue;
+}
+.district-panel-bottom {
+	padding: 8px;
+	border: $blue 1px solid;
+}
+.district-comparison {
+	border: $lightgray solid 1px;
+}
+.district-comparison-top {
+	background-color: $lightgray;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}

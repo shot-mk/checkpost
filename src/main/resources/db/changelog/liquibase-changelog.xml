@@ -5,5 +5,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     
     <include file="v-0.1-alpha/v-0.1-alpha-initial.xml" relativeToChangelogFile="true"/>
+    <include file="v-0.1-alpha-test-data/v-0.1-alpha-add-test-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

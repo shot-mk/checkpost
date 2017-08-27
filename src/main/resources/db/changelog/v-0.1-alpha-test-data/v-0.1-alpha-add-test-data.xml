@@ -1,0 +1,181 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="nikitab">
+
+        <insert tableName="VEHICLE">
+            <column name="PLATE_NUMBER" value="1233215"/>
+            <column name="COLOR_ID" value="1"/>
+            <column name="MANUFACTURER_ID" value="1"/>
+        </insert>
+
+        <insert tableName="VEHICLE">
+            <column name="PLATE_NUMBER" value="1231231"/>
+            <column name="COLOR_ID" value="1"/>
+            <column name="MANUFACTURER_ID" value="2"/>
+        </insert>
+
+        <insert tableName="VEHICLE">
+            <column name="PLATE_NUMBER" value="7776663"/>
+            <column name="COLOR_ID" value="2"/>
+            <column name="MANUFACTURER_ID" value="5"/>
+        </insert>
+
+        <insert tableName="VEHICLE">
+            <column name="PLATE_NUMBER" value="6666666"/>
+            <column name="COLOR_ID" value="3"/>
+            <column name="MANUFACTURER_ID" value="3"/>
+        </insert>
+
+        <insert tableName="VEHICLE">
+            <column name="PLATE_NUMBER" value="4433221"/>
+            <column name="COLOR_ID" value="4"/>
+            <column name="MANUFACTURER_ID" value="3"/>
+        </insert>
+
+    </changeSet>
+
+    <changeSet id="2" author="nikitab">
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="123456789"/>
+            <column name="TELEPHONE_NUMBER" value="0526213218"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="123336789"/>
+            <column name="TELEPHONE_NUMBER" value="0528913221"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="999888777"/>
+            <column name="TELEPHONE_NUMBER" value="0526213321"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="666777555"/>
+            <column name="TELEPHONE_NUMBER" value="0512312312"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="111222333"/>
+            <column name="TELEPHONE_NUMBER" value="0527868931"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="22113344552"/>
+            <column name="TELEPHONE_NUMBER" value="0517895642"/>
+        </insert>
+
+        <insert tableName="PASSENGER">
+            <column name="LICENSE_NUMBER" value="321987654"/>
+            <column name="TELEPHONE_NUMBER" value="0528976781"/>
+        </insert>
+
+    </changeSet>
+
+    <changeSet id="3" author="nikitab">
+
+        <insert tableName="DESTINATION">
+            <column name="NAME" value="Ramallah"/>
+        </insert>
+
+        <insert tableName="DESTINATION">
+            <column name="NAME" value="Jerusalem"/>
+        </insert>
+
+        <insert tableName="DESTINATION">
+            <column name="NAME" value="Zomet 11"/>
+        </insert>
+
+        <insert tableName="DESTINATION">
+            <column name="NAME" value="Mahsom Hisbe"/>
+        </insert>
+
+    </changeSet>
+
+    <changeSet id="4" author="nikitab">
+
+        <insert tableName="CHECKPOST">
+            <column name="DISTRICT_ID" value="1"/>
+            <column name="VEHICLE_ID" value="1"/>
+            <column name="LOCATION_ID" value="1"/>
+            <column name="DATE" value="2017-07-11"/>
+            <column name="TIME" value="13:23:00"/>
+            <column name="DATE_CREATED" value="2017-07-12 12:00:00"/>
+        </insert>
+
+        <insert tableName="CHECKPOST">
+            <column name="DISTRICT_ID" value="1"/>
+            <column name="VEHICLE_ID" value="2"/>
+            <column name="LOCATION_ID" value="2"/>
+            <column name="DATE" value="2017-08-13"/>
+            <column name="TIME" value="15:20:00"/>
+            <column name="DATE_CREATED" value="2017-08-15 12:00:00"/>
+        </insert>
+
+        <insert tableName="CHECKPOST">
+            <column name="DISTRICT_ID" value="1"/>
+            <column name="VEHICLE_ID" value="3"/>
+            <column name="LOCATION_ID" value="1"/>
+            <column name="DATE" value="2017-08-14"/>
+            <column name="TIME" value="15:23:00"/>
+            <column name="DATE_CREATED" value="2017-08-15 12:00:00"/>
+        </insert>
+
+        <insert tableName="CHECKPOST">
+            <column name="DISTRICT_ID" value="2"/>
+            <column name="VEHICLE_ID" value="4"/>
+            <column name="LOCATION_ID" value="3"/>
+            <column name="DATE" value="2017-08-11"/>
+            <column name="TIME" value="14:21:00"/>
+            <column name="DATE_CREATED" value="2017-09-12 12:00:00"/>
+        </insert>
+
+    </changeSet>
+
+
+    <changeSet id="5" author="nikitab">
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="1"/>
+            <column name="PASSENGER_ID" value="1"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="1"/>
+            <column name="PASSENGER_ID" value="2"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="1"/>
+            <column name="PASSENGER_ID" value="3"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="2"/>
+            <column name="PASSENGER_ID" value="4"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="3"/>
+            <column name="PASSENGER_ID" value="5"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="4"/>
+            <column name="PASSENGER_ID" value="6"/>
+        </insert>
+
+        <insert tableName="CHECKPOST_PASSENGER">
+            <column name="CHECKPOST_ID" value="4"/>
+            <column name="PASSENGER_ID" value="7"/>
+        </insert>
+
+    </changeSet>
+
+
+</databaseChangeLog>

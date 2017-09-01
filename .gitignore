@@ -21,5 +21,6 @@ nbproject/private/
 build/
 nbbuild/
 dist/
+!/bootstrap/dist/
 nbdist/
 .nb-gradle/

@@ -10,15 +10,10 @@ import { CheckpostDetailsComponent } from './checkpost-details/checkpost-details
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { CheckpostsComponent } from './checkposts/checkposts.component';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
-
-const appRoutes: Routes = [
-  { path: 'checkposts', component: CheckpostsComponent },
-  { path: 'add/:id', component: AddVehicleComponent },
- 
-  { path: '',   redirectTo: '/checkposts', pathMatch: 'full' }
-];
 
 @NgModule({
   declarations: [
@@ -31,10 +26,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    AppRoutingModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [MainService],

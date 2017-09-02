@@ -39,6 +39,6 @@ export class CheckpostsComponent {
 	}
 
 	goToAddVehicle(checkpostPanel: CheckpostPanel) {
-		this.router.navigate(['/add', checkpostPanel.name, {editedCheckpost: checkpostPanel.name}]);
+		this.router.navigate(['/add', checkpostPanel.name]);
 	}
 }

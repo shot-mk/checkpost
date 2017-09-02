@@ -3,8 +3,11 @@
 	<h2>חתמרים</h2>
 	<hr>
 	<div class="row">
-		<div class="col-3" *ngFor="let checkpostPanel of checkpostPanels">
-			<div class="checkpost-panel row">
+		<a
+			class="col-3 checkpost-panel"
+			(click)="goToAddVehicle(checkpostPanel)"
+			*ngFor="let checkpostPanel of checkpostPanels">
+			<div class="row">
 				<div class="checkpost-panel-top col-12" (click)="onSelect(checkpostPanel)">
 					<div class="row">
 						<div class="col-7">
@@ -16,15 +19,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="checkpost-panel-bottom col-12" (click)="goToAddVehicle(checkpostPanel)">
+				<div class="checkpost-panel-bottom col-12">
 					<div class="row">
 						<span class="col-10">הוסיף</span>
 						<span class="col-2"><i class="fa fa-arrow-circle-left"></i></span>
 					</div>
 				</div>
 			</div>
-
-		</div>
+		</a>
 	</div>
 	
 	<div class="row checkpost-comparison">

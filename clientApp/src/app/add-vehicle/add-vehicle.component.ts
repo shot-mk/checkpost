@@ -9,15 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class AddVehicleComponent implements OnInit {
 
 	name: string;
-  private sub: any;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
 	ngOnInit() {
-	  this.sub = this.activatedRoute.params.subscribe(params => {
-	     console.log(params);
-	     this.name = params['editedCheckpost'];
-	  });
+	  this.name = this.activatedRoute.snapshot.url[1].path;
 	}
 
 }

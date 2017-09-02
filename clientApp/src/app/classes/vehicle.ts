@@ -1,10 +1,11 @@
 import { Manufacturer } from './manufacturer';
 import { Color } from './color';
 
-
 export class Vehicle {
-	id: number;
-	color: Color;
-	plateNumber: number;
-	manufacturer: Manufacturer;
+	constructor(
+		public id: number,
+		public color: Color,
+		public plateNumber: number,
+		public manufacturer: Manufacturer
+	) { }
 }

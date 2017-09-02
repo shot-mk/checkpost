@@ -5,14 +5,16 @@ import { Location } from './location';
 import { Destination } from './destination';
 
 export class Checkpost {
-	id: number;
-	name: string;
-	vehicle: Vehicle;
-	district: District;
-	passengers: Passenger[];
-	location: Location;
-	destination: Destination;
-	date: string;
-	time: string;
-	dateCreated: string;
+	constructor(
+		public id: number,
+		public name: string,
+		public vehicle?: Vehicle,
+		public district?: District,
+		public passengers?: Passenger[],
+		public location?: Location,
+		public destination?: Destination,
+		public date?: string,
+		public time?: string,
+		public dateCreated?: string
+	) { }
 }

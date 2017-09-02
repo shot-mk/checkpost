@@ -1,5 +1,7 @@
 export class Passenger {
-	id: number;
-	passport: string;
-	telephone: string;
+	constructor(
+		public id: number,
+		public passport: number,
+		public telephone: number
+	) { }
 }

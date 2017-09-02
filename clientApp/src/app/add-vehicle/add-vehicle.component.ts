@@ -21,19 +21,42 @@ import { Destination } from '../classes/destination';
 export class AddVehicleComponent implements OnInit {
 
 	name: string;
-	model: any;
+	model: Checkpost;
+
+	color: string;
+	manufacturer: string;
+	plateNumber: number;
+	passengers: any = [{"passport": "", "phone": ""}];
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
 	ngOnInit() {
 	  this.name = this.activatedRoute.snapshot.url[1].path;
-	  this.model = new Checkpost(53, 'Dr IQ', new Vehicle(13, new Color(44, "crimson"), 3467599, new Manufacturer(99, "Nissan")));
-	  console.log(this.model);
+	  //this.model = new Checkpost( 1, this.name );
+	  //console.log(this.model);
 	}
 
 	onSubmit(vehicleForm) {
-		console.log(vehicleForm);
+		// console.log(this.model);
+		this.model = new Checkpost(
+			1, // id
+			this.name, // checkpost name
+			new Vehicle( 2, new Color(2, this.color), this.plateNumber, new Manufacturer(3, this.manufacturer) )
+		);
+		console.log(this.passengers);
 	}
+
+	addPassenger(): void {
+		this.passengers.push({"passport": "", "phone": ""});
+	}
+
+	deletePassenger(): void {
+		this.passengers.splice(-1,1);
+	}
+
+	trackByFn(index) {
+    return index;
+  }
 
 }

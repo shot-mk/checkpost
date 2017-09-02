@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,EAAG;EACF,UAAU,EAAE,IAAI;;AAGhB,eAAE;EACE,WAAW,EAAE,IAAI;EACpB,SAAS,EAAE,OAAO",
+"sources": ["add-vehicle.component.scss"],
+"names": [],
+"file": "add-vehicle.component.css"
+}

@@ -3,47 +3,82 @@
   <div [hidden]="submitted">
     <h1>חתמר: {{name}}</h1>
     <form (ngSubmit)="onSubmit(vehicleForm)" #vehicleForm="ngForm">
-      <div class="form-group">
-        <label for="name">Passport</label>
-        <input type="text" class="form-control" id="passport"
-               required
-               [(ngModel)]="model.passport" name="passport"
-               #passport="ngModel">
-        <div [hidden]="passport.valid || passport.pristine"
-             class="alert alert-danger">
-          Name is required
-        </div>
-      </div>
+      
+			<!-- Passengers Section -->
+			<h2>Passenger information</h2>
+			
+			<section
+				*ngFor="let passenger of passengers; let i = index; trackBy: trackByFn"
+				class="form-section">
+				
+				<p>Passenger {{i+1}}:</p>
+				<div class="form-group">
+	        <label for="name">Passport</label>
+	        <input type="text" class="form-control" id="passengerPassport-{{i+1}}"
+	               [(ngModel)]="passenger.passport" name="passengerPassport-{{i+1}}">
+	      </div>
 
-      <div class="form-group">
-        <label for="alterEgo">Plate number</label>
-        <input type="text" class="form-control" id="plateNumber"
-               [(ngModel)]="model.plateNumber" name="plateNumber">
-      </div>
+	      <div class="form-group">
+	        <label for="alterEgo">Phone</label>
+	        <input type="text" class="form-control" id="passengerPhone-{{i+1}}"
+	               [(ngModel)]="passenger.phone" name="passengerPhone-{{i+1}}">
+	      </div>
 
-      <div class="form-group">
-        <label for="alterEgo">Phone number</label>
-        <input type="text" class="form-control" id="phoneNumber"
-               [(ngModel)]="model.phoneNumber" name="phoneNumber">
-      </div>
+			</section>
 
-      <!-- <div class="form-group">
-        <label for="power">Custom select</label>
-        <select class="form-control" id="customSelect"
-                required
-                [(ngModel)]="model.power" name="customSelect"
-                #power="ngModel">
-          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
-        </select>
-        <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
-          Power is required
-        </div>
-      </div> -->
+			<span (click)="addPassenger()" class="btn btn-primary">Add passenger</span>
+			<span (click)="deletePassenger()" class="btn btn-danger">Delete passenger</span>
+			<!--/ Passengers Section -->
+
+      <!-- Vehicle Section -->
+      <h2>Vehicle information</h2>
+			<section class="form-section">
+	      <div class="form-group">
+	        <label for="name">Vehicle color</label>
+	        <input type="text" class="form-control" id="vehicleColor"
+	               [(ngModel)]="color" name="vehicleColor">
+	      </div>
+
+	      <div class="form-group">
+	        <label for="alterEgo">Vehicle Plate number</label>
+	        <input type="text" class="form-control" id="vehiclePlateNumber"
+	               [(ngModel)]="plateNumber" name="vehiclePlateNumber">
+	      </div>
+
+	      <div class="form-group">
+	        <label for="alterEgo">Vehicle manufacturer</label>
+	        <input type="text" class="form-control" id="vehicleManufacturer"
+	               [(ngModel)]="manufacturer" name="vehicleManufacturer">
+	      </div>
+			</section>
+			<!--/ Vehicle Section -->
+
+			<!-- Location and Time Section -->
+			<h2>Location and Time Information</h2>
+			<section class="form-section">
+				<div class="form-group">
+	        <label for="name">Location</label>
+	        <input type="text" class="form-control" id="location"
+	               [(ngModel)]="location" name="location">
+	      </div>
+
+	      <div class="form-group">
+	        <label for="alterEgo">Destination</label>
+	        <input type="text" class="form-control" id="destination"
+	               [(ngModel)]="destination" name="destination">
+	      </div>
+
+	      <div class="form-group">
+	        <label for="alterEgo">Date and Time</label>
+	        <input type="text" class="form-control" id="dateAndTime"
+	               [(ngModel)]="dateAndTime" name="dateAndTime">
+	      </div>
+			</section>
+			<!--/ Location and Time Section -->
 
       <button type="submit" class="btn btn-success" [disabled]="!vehicleForm.form.valid">Submit</button>
+
     </form>
   </div>
-
-  <pre>{{model.name}}</pre>
 
 </section>

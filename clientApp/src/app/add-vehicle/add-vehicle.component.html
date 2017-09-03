@@ -68,11 +68,7 @@
 	               [(ngModel)]="destination" name="destination">
 	      </div>
 
-	      <div class="form-group">
-	        <label for="alterEgo">Date and Time</label>
-	        <input type="text" class="form-control" id="dateAndTime"
-	               [(ngModel)]="dateAndTime" name="dateAndTime">
-	      </div>
+	      <owl-date-time [(ngModel)]="dateAndTime" name="dateAndTime" [locale]="he"></owl-date-time>
 			</section>
 			<!--/ Location and Time Section -->
 

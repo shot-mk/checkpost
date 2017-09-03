@@ -7,3 +7,13 @@ h2 {
 		font-size: 1.25rem;
 	}
 }
+
+.owl-calendar-control .owl-calendar-controlNav .nav-next:before {
+	border-left: none;
+    border-right: .75em solid #000;
+}
+
+.owl-calendar-control .owl-calendar-controlNav .nav-prev:before {
+    border-left: none;
+    border-right: .75em solid #000;
+}

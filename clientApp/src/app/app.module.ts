@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 
+import { DateTimePickerModule } from 'ng-pick-datetime';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { InMemoryDataService }  from './services/in-memory-data.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    DateTimePickerModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [MainService],

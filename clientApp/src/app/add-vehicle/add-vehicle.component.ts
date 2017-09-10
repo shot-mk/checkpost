@@ -21,19 +21,53 @@ import { Destination } from '../classes/destination';
 export class AddVehicleComponent implements OnInit {
 
 	name: string;
-	model: any;
+	model: Checkpost;
+
+	color: string;
+	manufacturer: string;
+	plateNumber: number;
+	location: string;
+	destination: string;
+	dateAndTime: any;
+	passengers: any = [{"passport": "", "phone": ""}];
+
+	he: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
 	ngOnInit() {
 	  this.name = this.activatedRoute.snapshot.url[1].path;
-	  this.model = new Checkpost(53, 'Dr IQ', new Vehicle(13, new Color(44, "crimson"), 3467599, new Manufacturer(99, "Nissan")));
-	  console.log(this.model);
+
+	  this.he = {
+        firstDayOfWeek: 0,
+        dayNames: ["יום ראשון", "יום שני", "יום שלישי","יום רביעי", "יום ימישי", "יום שישי", "יום שבת"],
+        dayNamesShort: ["א", "ב", "ג", "ד", "ה", "ו", "ש"],
+        monthNames: [ "ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר" ],
+        monthNamesShort: [ "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני","יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר" ]
+    };
 	}
 
 	onSubmit(vehicleForm) {
-		console.log(vehicleForm);
+		// console.log(this.model);
+		this.model = new Checkpost(
+			1, // id
+			this.name, // checkpost name
+			new Vehicle( 2, new Color(2, this.color), this.plateNumber, new Manufacturer(3, this.manufacturer) )
+		);
+		console.log(this.passengers);
 	}
+
+	addPassenger(): void {
+		this.passengers.push({"passport": "", "phone": ""});
+	}
+
+	deletePassenger(): void {
+		this.passengers.splice(-1,1);
+	}
+
+	trackByFn(index) {
+    return index;
+  }
 
 }

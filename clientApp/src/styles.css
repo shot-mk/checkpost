@@ -5,3 +5,13 @@ body {
 .direction-ltr {
 	direction: ltr;
 }
+
+.owl-calendar-control .owl-calendar-controlNav .nav-next:before {
+	border-left: none !important;
+    border-right: .75em solid #000 !important;
+}
+
+.owl-calendar-control .owl-calendar-controlNav .nav-prev:before {
+    border-right: none !important;
+    border-left: .75em solid #000 !important;
+}

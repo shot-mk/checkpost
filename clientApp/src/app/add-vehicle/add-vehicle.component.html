@@ -8,20 +8,21 @@
 			<h2>Passenger information</h2>
 			
 			<section
-				*ngFor="let passenger of passengers; let i = index; trackBy: trackByFn"
-				class="form-section">
+				*ngFor="let passenger of formData.passengers; let i = index; trackBy: trackByFn"
+				class="form-section row">
 				
-				<p>Passenger {{i+1}}:</p>
-				<div class="form-group">
+				<p class="col-12">Passenger {{i+1}}:</p>
+
+				<div class="form-group col">
 	        <label for="name">Passport</label>
 	        <input type="text" class="form-control" id="passengerPassport-{{i+1}}"
-	               [(ngModel)]="passenger.passport" name="passengerPassport-{{i+1}}">
+	               [(ngModel)]="formData.passengers[i].passport" name="passengerPassport-{{i+1}}">
 	      </div>
 
-	      <div class="form-group">
+	      <div class="form-group col">
 	        <label for="alterEgo">Phone</label>
 	        <input type="text" class="form-control" id="passengerPhone-{{i+1}}"
-	               [(ngModel)]="passenger.phone" name="passengerPhone-{{i+1}}">
+	               [(ngModel)]="formData.passengers[i].phone" name="passengerPhone-{{i+1}}">
 	      </div>
 
 			</section>
@@ -32,43 +33,47 @@
 
       <!-- Vehicle Section -->
       <h2>Vehicle information</h2>
-			<section class="form-section">
-	      <div class="form-group">
+			<section class="form-section row">
+	      <div class="form-group col">
 	        <label for="name">Vehicle color</label>
 	        <input type="text" class="form-control" id="vehicleColor"
-	               [(ngModel)]="color" name="vehicleColor">
+	               [(ngModel)]="formData.color" name="vehicleColor">
 	      </div>
 
-	      <div class="form-group">
+	      <div class="form-group col">
 	        <label for="alterEgo">Vehicle Plate number</label>
 	        <input type="text" class="form-control" id="vehiclePlateNumber"
-	               [(ngModel)]="plateNumber" name="vehiclePlateNumber">
+	               [(ngModel)]="formData.plateNumber" name="vehiclePlateNumber">
 	      </div>
 
-	      <div class="form-group">
+	      <div class="form-group col">
 	        <label for="alterEgo">Vehicle manufacturer</label>
 	        <input type="text" class="form-control" id="vehicleManufacturer"
-	               [(ngModel)]="manufacturer" name="vehicleManufacturer">
+	               [(ngModel)]="formData.manufacturer" name="vehicleManufacturer">
 	      </div>
 			</section>
 			<!--/ Vehicle Section -->
 
 			<!-- Location and Time Section -->
 			<h2>Location and Time Information</h2>
-			<section class="form-section">
-				<div class="form-group">
+			<section class="form-section row">
+				<div class="form-group col">
 	        <label for="name">Location</label>
 	        <input type="text" class="form-control" id="location"
-	               [(ngModel)]="location" name="location">
+	               [(ngModel)]="formData.location" name="location">
 	      </div>
 
-	      <div class="form-group">
+	      <div class="form-group col">
 	        <label for="alterEgo">Destination</label>
 	        <input type="text" class="form-control" id="destination"
-	               [(ngModel)]="destination" name="destination">
+	               [(ngModel)]="formData.destination" name="destination">
 	      </div>
+				
+				<div class="form-group col">
+					<label for="dateAndTime">Date and Time</label>
+	      	<owl-date-time [inline]="false" [(ngModel)]="formData.dateAndTime" id="dateAndTime" name="dateAndTime" [locale]="he"></owl-date-time>
+				</div>
 
-	      <owl-date-time [(ngModel)]="dateAndTime" name="dateAndTime" [locale]="he"></owl-date-time>
 			</section>
 			<!--/ Location and Time Section -->
 

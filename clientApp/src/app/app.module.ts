@@ -17,13 +17,15 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import { DigitSequenceDirective } from './directives/digit-sequence.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckpostDetailsComponent,
     AddVehicleComponent,
-    CheckpostsComponent
+    CheckpostsComponent,
+    DigitSequenceDirective
   ],
   imports: [
     BrowserModule,

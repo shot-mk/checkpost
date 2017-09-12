@@ -12,6 +12,7 @@ export class FormData {
 		public location?: string,
 		public destination?: string,
 		public passengers?: PassengerDriver[],
+		public driver?: PassengerDriver,
 		public dateAndTime?: any,
 		public color?: string
 	) { }

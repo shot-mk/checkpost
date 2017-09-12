@@ -2,12 +2,11 @@ import { Directive, Input, OnInit } from '@angular/core';
 import { AbstractControl, ValidatorFn, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 
 // validation function
-function validateZeroBeginningNumberFactory(digitsNumber) : ValidatorFn {
+function validateDigitSequenceFactory(digitsNumber) : ValidatorFn {
 	return (c: AbstractControl) => {
 
 		let regexp = new RegExp("^\\d{"+digitsNumber+"}$");
 		let isValid = regexp.test(c.value) == true;
-		console.log(digitsNumber);
 
 		if(isValid) {
 		    return null;
@@ -22,16 +21,16 @@ function validateZeroBeginningNumberFactory(digitsNumber) : ValidatorFn {
 }
 
 @Directive({
-  selector: '[zeroBeginningNumber][ngModel]',
-  providers: [{provide: NG_VALIDATORS, useExisting: PhoneNumberDirective, multi: true}]
+  selector: '[digitSequence][ngModel]',
+  providers: [{provide: NG_VALIDATORS, useExisting: DigitSequenceDirective, multi: true}]
 })
-export class PhoneNumberDirective implements Validator {
+export class DigitSequenceDirective implements Validator {
 
 	validator: ValidatorFn;
-	@Input('zeroBeginningNumber') digitsNumber: number;
+	@Input('digitSequence') digitsNumber: number;
 
 	ngOnInit() {
-		this.validator = validateZeroBeginningNumberFactory(this.digitsNumber);
+		this.validator = validateDigitSequenceFactory(this.digitsNumber);
 	}
 
 	validate(c: FormControl) {

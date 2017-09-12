@@ -1,16 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { Checkpost } from '../classes/checkpost';
-import { CheckpostTest } from '../classes/checkpost-test';
-
-import { Vehicle } from '../classes/vehicle';
-import { Color } from '../classes/color';
-import { Manufacturer } from '../classes/manufacturer';
-import { District } from '../classes/district';
-import { Passenger } from '../classes/passenger';
-import { Location } from '../classes/location';
-import { Destination } from '../classes/destination';
 import { PassengerDriver, FormData } from '../classes/formData';
 
 @Component({
@@ -21,21 +10,11 @@ import { PassengerDriver, FormData } from '../classes/formData';
 export class AddVehicleComponent implements OnInit {
 
 	name: string;
-	model: Checkpost;
-
-	// color: string;
-	// manufacturer: string;
-	// plateNumber: number;
-	// location: string;
-	// destination: string;
-	// dateAndTime: any;
-	// passengers: any = [{"passport": "", "phone": ""}];
-
 	formData: FormData;
 	he: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
-  	this.formData = new FormData("", undefined, "", "", [new PassengerDriver()], "", "");
+  	this.formData = new FormData("", undefined, "", "", [], new PassengerDriver(), "", "");
   }
 
 	ngOnInit() {

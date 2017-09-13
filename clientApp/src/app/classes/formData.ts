@@ -14,6 +14,7 @@ export class FormData {
 		public passengers?: PassengerDriver[],
 		public driver?: PassengerDriver,
 		public dateAndTime?: any,
-		public color?: string
+		public color?: string,
+		public checkpointName?: string
 	) { }
 }

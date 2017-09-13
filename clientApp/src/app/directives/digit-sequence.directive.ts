@@ -8,6 +8,10 @@ function validateDigitSequenceFactory(digitsNumber) : ValidatorFn {
 		let regexp = new RegExp("^\\d{"+digitsNumber+"}$");
 		let isValid = regexp.test(c.value) == true;
 
+		/* checking if the value is valid
+		I want the field to be also valid if no value was specified (undefined),
+		or the value was specified and then removed ("") */
+		/*if(isValid || c.value === undefined || c.value === "") {*/
 		if(isValid) {
 		    return null;
 		} else {

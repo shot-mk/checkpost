@@ -2,7 +2,7 @@
 
   <div [hidden]="submitted">
     <h1>חתמר: {{name}}</h1>
-    <form (ngSubmit)="onSubmit(vehicleForm)" #vehicleForm="ngForm">
+    <form (ngSubmit)="onSubmit(driverPassport, driverPhone)" #vehicleForm="ngForm">
       
 			<h2>מידע על נוסעים:</h2>
 
@@ -13,13 +13,17 @@
 
 				<div class="form-group col">
 	        <label for="driverPassport">ת.ז.</label>
-	        <input type="text" class="form-control" id="driverPassport"
-	               [(ngModel)]="formData.driver.passport" name="driverPassport">
+	        <input type="text" class="form-control driver-attr validated-value" id="driverPassport"
+	               [(ngModel)]="formData.driver.passport"
+	               name="driverPassport"
+	               ngModel
+	               #driverPassport="ngModel"
+	               [digitSequence]="9"/>
 	      </div>
 
 	      <div class="form-group col">
 	        <label for="driverPhone">טלפון</label>
-	        <input type="text" class="form-control" id="driverPhone"
+	        <input type="text" class="form-control driver-attr validated-value" id="driverPhone"
 	               [(ngModel)]="formData.driver.phone"
 	               name="driverPhone"
 	               ngModel
@@ -37,13 +41,13 @@
 				<p class="col-12">נוסע {{i+1}}:</p>
 
 				<div class="form-group col">
-	        <label for="name">ת.ז.</label>
+	        <label for="passengerPassport-{{i+1}}">ת.ז.</label>
 	        <input type="text" class="form-control" id="passengerPassport-{{i+1}}"
 	               [(ngModel)]="formData.passengers[i].passport" name="passengerPassport-{{i+1}}">
 	      </div>
 
 	      <div class="form-group col">
-	        <label for="alterEgo">טלפון</label>
+	        <label for="passengerPhone-{{i+1}}">טלפון</label>
 	        <input type="text" class="form-control" id="passengerPhone-{{i+1}}"
 	               [(ngModel)]="formData.passengers[i].phone"
 	               name="passengerPhone-{{i+1}}">
@@ -51,7 +55,7 @@
 
 			</section>
 
-			<span (click)="addPassenger()" class="btn btn-primary">הוסף נוסע</span>
+			<span (click)="addPassenger()" class="btn btn-success">הוסף נוסע</span>
 			<span (click)="deletePassenger()" class="btn btn-danger">מחק נוסע</span>
 			<!--/ Passengers Section -->
 
@@ -59,19 +63,25 @@
       <h2>מידע על הרכב:</h2>
 			<section class="form-section row">
 	      <div class="form-group col">
-	        <label for="name">צבע</label>
+	        <label for="vehicleColor">צבע</label>
 	        <input type="text" class="form-control" id="vehicleColor"
-	               [(ngModel)]="formData.color" name="vehicleColor">
+	               [(ngModel)]="formData.color"
+	               name="vehicleColor" />
 	      </div>
 
 	      <div class="form-group col">
-	        <label for="alterEgo">מספר לוחית</label>
-	        <input type="text" class="form-control" id="vehiclePlateNumber"
-	               [(ngModel)]="formData.plateNumber" name="vehiclePlateNumber">
+	        <label for="vehiclePlateNumber">מספר לוחית</label>
+	        <input type="text" class="form-control validated-value" id="vehiclePlateNumber"
+	               [(ngModel)]="formData.plateNumber"
+	               name="vehiclePlateNumber"
+	               ngModel
+	               required
+	               #vehiclePlateNumber="ngModel"
+	               [digitSequence]="7" />
 	      </div>
 
 	      <div class="form-group col">
-	        <label for="alterEgo">מותג</label>
+	        <label for="vehicleManufacturer">מותג</label>
 	        <input type="text" class="form-control" id="vehicleManufacturer"
 	               [(ngModel)]="formData.manufacturer" name="vehicleManufacturer">
 	      </div>
@@ -82,13 +92,13 @@
 			<h2>מידע על מיקום ושעה</h2>
 			<section class="form-section row">
 				<div class="form-group col">
-	        <label for="name">מיקום</label>
+	        <label for="location">מיקום</label>
 	        <input type="text" class="form-control" id="location"
 	               [(ngModel)]="formData.location" name="location">
 	      </div>
 
 	      <div class="form-group col">
-	        <label for="alterEgo">כיוון</label>
+	        <label for="destination">כיוון</label>
 	        <input type="text" class="form-control" id="destination"
 	               [(ngModel)]="formData.destination" name="destination">
 	      </div>
@@ -101,7 +111,12 @@
 			</section>
 			<!--/ Location and Time Section -->
 
-      <button type="submit" class="btn btn-success" [disabled]="!vehicleForm.form.valid">שלח</button>
+      <button type="submit"
+      			  class="btn btn-primary"
+      			  [disabled]="(vehiclePlateNumber.invalid || (driverPassport.invalid && driverPhone.invalid))"
+      			  >
+      			  שלח
+      </button>
 
     </form>
   </div>

@@ -12,13 +12,13 @@ export class AddVehicleComponent implements OnInit {
 	name: string;
 	formData: FormData;
 	he: any;
+	myValue: boolean = true;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-  	this.formData = new FormData("", undefined, "", "", [], new PassengerDriver(), "", "");
-  }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
 	ngOnInit() {
 	  this.name = this.activatedRoute.snapshot.url[1].path;
+  	this.formData = new FormData("", undefined, "", "", [], new PassengerDriver(), "", "", this.name);
 
 	  this.he = {
         firstDayOfWeek: 0,
@@ -29,7 +29,13 @@ export class AddVehicleComponent implements OnInit {
     };
 	}
 
-	onSubmit(vehicleForm) {
+	onSubmit(driverPassport, driverPhone) {
+		
+		// we allow the form to be submitted if either driver's passport or driver's phone is invalid,
+		// however we do not want an invalid value to be transfered to backend, so we check the values
+		// and set them to undefined if they are invalid
+		if(driverPassport._control._status == "INVALID") { this.formData.driver.passport = undefined }
+		if(driverPhone._control._status == "INVALID") { this.formData.driver.phone = undefined }
 		console.log(this.formData);
 	}
 

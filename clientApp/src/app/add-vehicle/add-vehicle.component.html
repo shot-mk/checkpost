@@ -1,8 +1,14 @@
 <section class="container">
 
-  <div>
+  <div class="add-vehicle-form-container">
+	
+	<div style="direction: ltr;">{{diagnostic}}</div>
 
-    <form (ngSubmit)="onSubmit(driverPassport, driverPhone, checkpostName)" #vehicleForm="ngForm">
+  	<div [@msgState]="msgState" class="alert alert-success" role="alert">
+	  <strong>Well done!</strong> Your entry has be successfully added.
+	</div>
+
+    <form (ngSubmit)="onSubmit(driverPassport, driverPhone, vehicleForm)" #vehicleForm="ngForm">
 	    
 	    <h2>חתמר:</h2>
 
@@ -92,7 +98,7 @@
 			      </div>
 
 			      <div class="form-group col-12">
-			        <label for="vehiclePlateNumber">מספר לוחית</label>
+			        <label for="vehiclePlateNumber">*מספר לוחית</label>
 			        <input type="text" class="form-control validated-value" id="vehiclePlateNumber"
 			               [(ngModel)]="formData.plateNumber"
 			               name="vehiclePlateNumber"

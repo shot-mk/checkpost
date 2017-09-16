@@ -35,3 +35,11 @@ input {
 	border-color: #ddd;
 	background-color: #ddd;
 }
+
+.add-vehicle-form-container {
+	overflow-x: hidden;
+	.alert-success {
+    	margin: 0;
+		display: inline-block;
+	}
+}

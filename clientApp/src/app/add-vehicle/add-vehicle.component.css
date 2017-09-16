@@ -25,4 +25,10 @@ input {
   border-color: #ddd;
   background-color: #ddd; }
 
+.add-vehicle-form-container {
+  overflow-x: hidden; }
+  .add-vehicle-form-container .alert-success {
+    margin: 0;
+    display: inline-block; }
+
 /*# sourceMappingURL=add-vehicle.component.css.map */

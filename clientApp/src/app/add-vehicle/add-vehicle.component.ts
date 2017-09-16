@@ -3,19 +3,49 @@ import { ActivatedRoute } from '@angular/router';
 import { PassengerDriver, FormData } from '../classes/formData';
 import { MainService } from '../services/main.service';
 import { CheckpostPanel } from '../classes/checkpost-panel';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-add-vehicle',
   templateUrl: './add-vehicle.component.html',
-  styleUrls: ['./add-vehicle.component.css']
+  styleUrls: ['./add-vehicle.component.css'],
+  animations: [
+  trigger('msgState', [
+    state('inactive', style({transform: 'translateX(110%)'})),
+    state('active',   style({transform: 'translateX(0)'})),
+    transition('inactive => active', animate('250ms ease-in')),
+    transition('active => inactive', animate('250ms ease-out')),
+    transition('void => inactive', [
+      style({transform: 'translateX(-100%) scale(1)'}),
+      animate(100)
+    ]),
+    transition('inactive => void', [
+      animate(100, style({transform: 'translateX(100%)'}))
+    ]),
+    transition('void => active', [
+      style({transform: 'translateX(0) scale(0)'}),
+      animate(200)
+    ]),
+    transition('active => void', [
+      animate(200, style({transform: 'translateX(0) scale(0)'}))
+    ])
+  ])
+]
 })
 export class AddVehicleComponent implements OnInit {
 
-	checkpostRouteName: string;
-	formData: FormData;
 	he: any;
+	formData: FormData;
 	myValue: boolean = true;
+	checkpostRouteName: string;
 	checkpostPanels: CheckpostPanel[];
+	msgState: string = "inactive";
 
   constructor(private activatedRoute: ActivatedRoute, private mainService: MainService) { }
 
@@ -50,14 +80,20 @@ export class AddVehicleComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
 	}
 
-	onSubmit(driverPassport, driverPhone, checkpostName) {
+	onSubmit(driverPassport, driverPhone, vehicleForm) {
 		
 		// we allow the form to be submitted if either driver's passport or driver's phone is invalid,
 		// however we do not want an invalid value to be transfered to backend, so we check the values
 		// and set them to undefined if they are invalid
 		if(driverPassport._control._status == "INVALID") { this.formData.driver.passport = undefined }
 		if(driverPhone._control._status == "INVALID") { this.formData.driver.phone = undefined }
-		console.log(this.formData);
+
+		vehicleForm.reset();
+		this.msgState = "active";
+
+		setTimeout(() => {
+			this.msgState = "inactive";
+		}, 4000)
 	}
 
 	addPassenger(): void {
@@ -71,5 +107,7 @@ export class AddVehicleComponent implements OnInit {
 	trackByFn(index) {
     return index;
   }
+
+   get diagnostic() { return JSON.stringify(this.formData); }
 
 }

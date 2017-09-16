@@ -4,7 +4,7 @@
 
     <form (ngSubmit)="onSubmit(driverPassport, driverPhone, checkpostName)" #vehicleForm="ngForm">
 	    
-	    <h2>התמר:</h2>
+	    <h2>חתמר:</h2>
 
 	    <section class="form-section row">
 	    	<div class="form-group col-6">
@@ -15,7 +15,6 @@
 			    				#checkpostName="ngModel"
 			    				[compareWith]="compareFn"
 			    				[(ngModel)]="formData.checkpost">
-			    	<option value="" disabled>Choose a checkpost</option>
 				    <option *ngFor="let checkpost of checkpostPanels"
 										[ngValue]="checkpost">
 										{{checkpost.name}}

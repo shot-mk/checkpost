@@ -1,8 +1,28 @@
 <section class="container">
 
-  <div [hidden]="submitted">
-    <h1>חתמר: {{name}}</h1>
-    <form (ngSubmit)="onSubmit(driverPassport, driverPhone)" #vehicleForm="ngForm">
+  <div>
+
+    <form (ngSubmit)="onSubmit(driverPassport, driverPhone, checkpostName)" #vehicleForm="ngForm">
+	    
+	    <h2>התמר:</h2>
+
+	    <section class="form-section row">
+	    	<div class="form-group col-6">
+			    <select class="form-control"
+			    				ngModel
+			    				id="checkpost"
+			    				name="checkpost"
+			    				#checkpostName="ngModel"
+			    				[compareWith]="compareFn"
+			    				[(ngModel)]="formData.checkpost">
+			    	<option value="" disabled>Choose a checkpost</option>
+				    <option *ngFor="let checkpost of checkpostPanels"
+										[ngValue]="checkpost">
+										{{checkpost.name}}
+				    </option>
+				  </select>
+			  </div>
+		  </section>
       
 			<h2>מידע על נוסעים:</h2>
 
@@ -59,57 +79,64 @@
 			<span (click)="deletePassenger()" class="btn btn-danger">מחק נוסע</span>
 			<!--/ Passengers Section -->
 
-      <!-- Vehicle Section -->
-      <h2>מידע על הרכב:</h2>
-			<section class="form-section row">
-	      <div class="form-group col">
-	        <label for="vehicleColor">צבע</label>
-	        <input type="text" class="form-control" id="vehicleColor"
-	               [(ngModel)]="formData.color"
-	               name="vehicleColor" />
-	      </div>
+      
+			<section class="row">
+	      <!-- Vehicle Section -->
+	      <section class="col">
+	      <h2>מידע על הרכב:</h2>
+					<section class="form-section row">
+			      <div class="form-group col-12">
+			        <label for="vehicleColor">צבע</label>
+			        <input type="text" class="form-control" id="vehicleColor"
+			               [(ngModel)]="formData.color"
+			               name="vehicleColor" />
+			      </div>
 
-	      <div class="form-group col">
-	        <label for="vehiclePlateNumber">מספר לוחית</label>
-	        <input type="text" class="form-control validated-value" id="vehiclePlateNumber"
-	               [(ngModel)]="formData.plateNumber"
-	               name="vehiclePlateNumber"
-	               ngModel
-	               required
-	               #vehiclePlateNumber="ngModel"
-	               [digitSequence]="7" />
-	      </div>
+			      <div class="form-group col-12">
+			        <label for="vehiclePlateNumber">מספר לוחית</label>
+			        <input type="text" class="form-control validated-value" id="vehiclePlateNumber"
+			               [(ngModel)]="formData.plateNumber"
+			               name="vehiclePlateNumber"
+			               ngModel
+			               required
+			               #vehiclePlateNumber="ngModel"
+			               [digitSequence]="7" />
+			      </div>
 
-	      <div class="form-group col">
-	        <label for="vehicleManufacturer">מותג</label>
-	        <input type="text" class="form-control" id="vehicleManufacturer"
-	               [(ngModel)]="formData.manufacturer" name="vehicleManufacturer">
-	      </div>
+			      <div class="form-group col-12">
+			        <label for="vehicleManufacturer">מותג</label>
+			        <input type="text" class="form-control" id="vehicleManufacturer"
+			               [(ngModel)]="formData.manufacturer" name="vehicleManufacturer">
+			      </div>
+					</section>
+				</section>
+				<!--/ Vehicle Section -->
+
+				<!-- Location and Time Section -->
+				<section class="col">
+					<h2>מידע על מיקום ושעה</h2>
+					<section class="form-section row col">
+						<div class="form-group col-12">
+			        <label for="location">מיקום</label>
+			        <input type="text" class="form-control" id="location"
+			               [(ngModel)]="formData.location" name="location">
+			      </div>
+
+			      <div class="form-group col-12">
+			        <label for="destination">כיוון</label>
+			        <input type="text" class="form-control" id="destination"
+			               [(ngModel)]="formData.destination" name="destination">
+			      </div>
+						
+						<div class="form-group col-12">
+							<label for="dateAndTime">תאריך וזמן</label>
+			      	<owl-date-time [inline]="false" [(ngModel)]="formData.dateAndTime" id="dateAndTime" name="dateAndTime" [locale]="he"></owl-date-time>
+						</div>
+
+					</section>
+				</section>
+				<!--/ Location and Time Section -->
 			</section>
-			<!--/ Vehicle Section -->
-
-			<!-- Location and Time Section -->
-			<h2>מידע על מיקום ושעה</h2>
-			<section class="form-section row">
-				<div class="form-group col">
-	        <label for="location">מיקום</label>
-	        <input type="text" class="form-control" id="location"
-	               [(ngModel)]="formData.location" name="location">
-	      </div>
-
-	      <div class="form-group col">
-	        <label for="destination">כיוון</label>
-	        <input type="text" class="form-control" id="destination"
-	               [(ngModel)]="formData.destination" name="destination">
-	      </div>
-				
-				<div class="form-group col">
-					<label for="dateAndTime">תאריך וזמן</label>
-	      	<owl-date-time [inline]="false" [(ngModel)]="formData.dateAndTime" id="dateAndTime" name="dateAndTime" [locale]="he"></owl-date-time>
-				</div>
-
-			</section>
-			<!--/ Location and Time Section -->
 
       <button type="submit"
       			  class="btn btn-primary"

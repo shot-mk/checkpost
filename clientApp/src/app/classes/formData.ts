@@ -1,3 +1,5 @@
+import { CheckpostPanel } from "./checkpost-panel"; 
+
 export class PassengerDriver {
 	constructor(
 		public passport?: number,
@@ -15,6 +17,6 @@ export class FormData {
 		public driver?: PassengerDriver,
 		public dateAndTime?: any,
 		public color?: string,
-		public checkpointName?: string
+		public checkpost?: CheckpostPanel
 	) { }
 }

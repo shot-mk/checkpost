@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
 	direction: rtl;
+	font-family: 'Rubik', sans-serif !important;
 }
 .direction-ltr {
 	direction: ltr;
@@ -14,4 +15,38 @@ body {
 .owl-calendar-control .owl-calendar-controlNav .nav-prev:before {
     border-right: none !important;
     border-left: .75em solid #000 !important;
+}
+
+.owl-calendar-control .owl-calendar-controlContent .month-control {
+	margin-right: 0;
+	margin-left: .8rem;
+}
+
+.owl-inputtext {
+	height: 38px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.owl-timer-wrapper[_ngcontent-c2] {
+	flex-direction: row-reverse;
+}
+
+.owl-calendar-day .owl-weekdays th.owl-weekday {
+	text-align: center;
+}
+
+app-add-vehicle > .container {
+	margin-top: 5%;
+}
+
+app-add-vehicle .row {
+	margin: 0;
+}
+
+app-add-vehicle .col, app-add-vehicle .col-12 {
+	padding: 0;
+}
+
+app-add-vehicle .form-group {
+	padding: 0 0 0 15px;
 }

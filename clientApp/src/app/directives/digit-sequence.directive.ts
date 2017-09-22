@@ -2,7 +2,7 @@ import { Directive, Input, OnInit } from '@angular/core';
 import { AbstractControl, ValidatorFn, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 
 // validation function
-function validateDigitSequenceFactory(digitsNumber) : ValidatorFn {
+function validateDigitSequenceFactory(digitsNumber: number) : ValidatorFn {
 	return (c: AbstractControl) => {
 
 		let regexp = new RegExp("^\\d{"+digitsNumber+"}$");
